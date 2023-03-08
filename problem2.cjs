@@ -155,5 +155,4 @@ function mainFunction() {
 
 }
 
-
-console.log(mainFunction());
+module.exports = mainFunction;
