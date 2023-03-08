@@ -32,7 +32,7 @@ function createDirectoryAndDeleteTheDirectoryFiles() {
 
     function filesCreation(fileRefrenceArray) {
 
-        fileRefrenceArray.map((elment, index, array) => {
+        fileRefrenceArray.forEach((elment, index, array) => {
 
             fs.writeFile(
 
