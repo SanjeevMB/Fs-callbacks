@@ -149,19 +149,19 @@ function mainFunction() {
 
                                                                                             }
 
-                                                                                        })
+                                                                                        });
 
                                                                                     }
 
-                                                                                })
+                                                                                });
 
                                                                         }
 
-                                                                    })
+                                                                    });
 
                                                             }
 
-                                                        })
+                                                        });
 
                                                 }
 
@@ -169,7 +169,7 @@ function mainFunction() {
 
                                     }
 
-                                })
+                                });
 
                             }
 
