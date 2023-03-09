@@ -16,21 +16,43 @@ function createDirectoryAndDeleteTheDirectoryFiles() {
     let fileRefrenceArray = new Array(10);
     fileRefrenceArray.fill(0);
 
-    fs.mkdir(path.join(__dirname, directoryName), (error) => {
+    function callback(error, data) {
 
         if (error) {
 
-            console.error(error);
+            console.log('Error : ' + error);
 
         } else {
 
-            console.log('directory created');
+            console.log(data);
 
         }
 
-    });
+    }
 
-    function filesCreation(fileRefrenceArray) {
+    function creatingDirectory(directoryName, callback) {
+
+        fs.mkdir(path.join(__dirname, directoryName), (error) => {
+
+            if (error) {
+    
+                callback(error);
+    
+            } else {
+    
+                callback(null, 'directory created');
+    
+            }
+    
+        });
+
+
+    }
+
+    creatingDirectory(directoryName, callback);
+
+
+    function filesCreation(fileRefrenceArray, callback) {
 
         fileRefrenceArray.forEach((elment, index, array) => {
 
@@ -45,12 +67,12 @@ function createDirectoryAndDeleteTheDirectoryFiles() {
 
                     if (error) {
 
-                        console.error(error);
+                        callback(error);
 
                     } else {
 
-                        console.log('files created');
-                        fileDeletion(`file${index + 1}.json`);
+                        callback(null, 'files created');
+                        fileDeletion(`file${index + 1}.json`, callback);
 
                     }
 
@@ -60,9 +82,9 @@ function createDirectoryAndDeleteTheDirectoryFiles() {
 
     }
 
-    filesCreation(fileRefrenceArray);
+    filesCreation(fileRefrenceArray, callback);
 
-    function fileDeletion(fileName) {
+    function fileDeletion(fileName, callback) {
 
         fs.unlink(
 
@@ -84,7 +106,7 @@ function createDirectoryAndDeleteTheDirectoryFiles() {
 
     }
 
-    return 'Asynchronous Task completed';
+    return 'this is Asynchronous task';
 
 }
 
