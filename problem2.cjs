@@ -71,68 +71,97 @@ function mainFunction() {
 
                                                 } else {
 
-                                                    fs.appendFile('filenames.txt' , lowerCaseContentFile + '\n', 
-                                                    (error) => {
+                                                    fs.appendFile('filenames.txt', lowerCaseContentFile + '\n',
+                                                        (error) => {
 
-                                                        if(error) {
+                                                            if (error) {
 
-                                                            console.log(error);
+                                                                console.log(error);
 
-                                                        }else{
+                                                            } else {
 
-                                                            fs.readFile(lowerCaseContentFile, 
-                                                                (error, data) => {
-                                                                    if(error){
+                                                                fs.readFile(lowerCaseContentFile,
+                                                                    (error, data) => {
 
-                                                                        console.log(error);
+                                                                        if (error) {
 
-                                                                    }else{
+                                                                            console.log(error);
 
-                                                                        let sortedContent = 'sortedContent.txt';
+                                                                        } else {
 
-                                                                        let sortedFile = data.toString().split('.')
-                                                                        .sort((first, second) => {
-                                                                            return first.localeCompare(second);
-                                                                        });
+                                                                            let sortedContent = 'sortedContent.txt';
+                                                                            let sortedFile = data.toString().split('.')
+                                                                                .sort((first, second) => {
 
-                                                                        fs.writeFile('sortedFile.txt', sortedFile.join('\n'), 
-                                                                        (error) => {
-                                                                            if(error){
-                                                                                console.log(error);
-                                                                            }else{
-                                                                                fs.appendFile('filenames.txt', 'sortedFile.txt' + '\n', (error) => {
-                                                                                    if(error) {
+                                                                                    return first.localeCompare(second);
+
+                                                                                });
+
+                                                                            fs.writeFile('sortedFile.txt', sortedFile.join('\n'),
+                                                                                (error) => {
+
+                                                                                    if (error) {
+
                                                                                         console.log(error);
-                                                                                    }else {
-                                                                                        
-                                                                                        fs.readFile('filenames.txt', (error, data) => {
-                                                                                            if(error){
+
+                                                                                    } else {
+
+                                                                                        fs.appendFile('filenames.txt', 'sortedFile.txt' + '\n', (error) => {
+
+                                                                                            if (error) {
+
                                                                                                 console.log(error);
-                                                                                            }else{
-                                                                                                let sortedFilesNamesInArray = data.toString()
-                                                                                                .split('\n');
-                                                                                                sortedFilesNamesInArray.forEach((element) => {
-                                                                                                    fs.unlink(element, (error) => {
-                                                                                                        if(error){
-                                                                                                            console.log(error);
-                                                                                                        }else{
-                                                                                                            console.log('All task completed');
-                                                                                                        }
-                                                                                                    } )
-                                                                                                })
+
+                                                                                            } else {
+
+                                                                                                fs.readFile('filenames.txt', (error, data) => {
+
+                                                                                                    if (error) {
+
+                                                                                                        console.log(error);
+
+                                                                                                    } else {
+
+                                                                                                        let sortedFilesNamesInArray = data.toString()
+                                                                                                            .split('\n');
+
+                                                                                                        sortedFilesNamesInArray.forEach((element) => {
+
+                                                                                                            fs.unlink(element, (error) => {
+
+                                                                                                                if (error) {
+
+                                                                                                                    console.log(error);
+
+                                                                                                                } else {
+
+                                                                                                                    console.log('All task completed');
+
+                                                                                                                }
+                                                                                                                
+                                                                                                            });
+
+                                                                                                        });
+
+                                                                                                    }
+
+                                                                                                });
+
                                                                                             }
+
                                                                                         })
-                                                                                        
+
                                                                                     }
+
                                                                                 })
-                                                                            }
-                                                                        })
-                                                                    }
-                                                                })
 
-                                                        }
+                                                                        }
 
-                                                    })
+                                                                    })
+
+                                                            }
+
+                                                        })
 
                                                 }
 
@@ -140,13 +169,14 @@ function mainFunction() {
 
                                     }
 
-
-
                                 })
 
                             }
-                        })
+
+                        });
+
                     }
+
                 });
 
         }
