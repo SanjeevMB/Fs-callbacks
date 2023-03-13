@@ -106,7 +106,7 @@ function mainFunction() {
 
                                                                                     } else {
 
-                                                                                        fs.appendFile('filenames.txt', 'sortedFile.txt' + '\n', (error) => {
+                                                                                        fs.appendFile('filenames.txt', 'sortedFile.txt', (error) => {
 
                                                                                             if (error) {
 
